@@ -1,0 +1,33 @@
+{
+  "name": "superlogin-client",
+  "description": "superlogin-client Project",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/dryajov/superlogin-client"
+  },
+  "version": "0.0.0",
+  "dependencies": {
+    "grunt-build-control": "^0.1.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "bower": "~1.2.8",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-less": "~0.10.0",
+    "grunt-browser-sync": "~0.6.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-imagemin": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-svgmin": "~0.3.1",
+    "grunt-preprocess": "4.0.0",
+    "time-grunt": "^0.2.10",
+    "grunt-concurrent": "^0.4.3",
+    "grunt-hashres": "^0.4.1",
+    "load-grunt-tasks": "^0.4.0"
+  },
+    "engines": {
+        "node": ">=0.8.0"
+    }
+}
