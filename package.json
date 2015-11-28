@@ -7,27 +7,39 @@
   },
   "version": "0.0.0",
   "dependencies": {
-    "grunt-build-control": "^0.1.2"
+    "jquery": "^2.1.4",
+    "q": "^1.4.1"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "bower": "~1.2.8",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-less": "~0.10.0",
-    "grunt-browser-sync": "~0.6.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-imagemin": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-svgmin": "~0.3.1",
-    "grunt-preprocess": "4.0.0",
-    "time-grunt": "^0.2.10",
-    "grunt-concurrent": "^0.4.3",
-    "grunt-hashres": "^0.4.1",
-    "load-grunt-tasks": "^0.4.0"
+    "browserify": "^12.0.1",
+    "browserify-shim": "^3.8.11",
+    "del": "^2.0.1",
+    "gulp": "^3.5.6",
+    "gulp-browserify": "^0.5.1",
+    "gulp-copy": "0.0.2",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.2.2",
+    "gulp-jshint": "^1.9.2",
+    "gulp-karma": "0.0.4",
+    "gulp-ng-annotate": "^0.5.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-uglify": "^0.1.0",
+    "jasmine-ajax": "^3.2.0",
+    "jasmine-core": "^2.2.0",
+    "jshint-stylish": "^1.0.1",
+    "karma": "~0.12.31",
+    "karma-browserify": "^4.4.1",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-jasmine-ajax": "^0.1.13",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "partialify": "^3.1.5",
+    "phantomjs": "^1.9.19",
+    "vinyl-source-stream": "^1.1.0"
   },
-    "engines": {
-        "node": ">=0.8.0"
-    }
+  "engines": {
+    "node": ">=0.8.0"
+  }
 }
