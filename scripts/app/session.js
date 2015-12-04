@@ -188,7 +188,7 @@ Session.prototype.checkRefresh = function () {
 			});
 	}
 
-	return Q(); // return resolved promise
+	return Q(this); // return resolved promise
 };
 
 /**

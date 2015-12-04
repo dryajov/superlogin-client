@@ -7,7 +7,7 @@ module.exports = function (config) {
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
 
-
+		// need to pull in all used plugins
 		plugins: [
 			"karma-browserify",
 			"karma-chrome-launcher",
@@ -65,7 +65,7 @@ module.exports = function (config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['Chrome'],
+		browsers: ['Chrome', 'Firefox', 'PhantomJS'],
 
 
 		// Continuous Integration mode

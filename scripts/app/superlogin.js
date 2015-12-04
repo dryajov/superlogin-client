@@ -3,6 +3,8 @@
  */
 'use strict';
 
+var xhook = require('xhook').xhook;
+
 var Q = require('q');
 var $ = require('jquery');
 
@@ -30,7 +32,6 @@ function Superlogin(config) {
 			//$rootScope.$broadcast('sl:login', session);
 			self.oauthDeferred.resolve(session);
 		} else if (!error && link) {
-			//$rootScope.$broadcast('sl:link', link);
 			self.oauthDeferred.resolve(capitalizeFirstLetter(link) + ' successfully linked.');
 		} else {
 			self.oauthDeferred.reject(error);
@@ -40,7 +41,7 @@ function Superlogin(config) {
 
 	var parser = window.document.createElement('a');
 
-	function request(request) {
+	function requestInterceptor(request) {
 		var endpoints = self.getConfig().endpoints;
 		var session = self.getSession();
 		if (session && session.token) {
@@ -48,20 +49,17 @@ function Superlogin(config) {
 		}
 		if (checkEndpoint(request.url, endpoints)) {
 			if (session && session.token) {
-				request.setRequestHeader('Authorization', 'Bearer ' + session.token + ':' + session.password);
+				request.headers['Authorization'] = 'Bearer ' + session.token + ':' + session.password
 			}
 		}
-		return request;
 	}
 
-	function responseError(response, status) {
+	function responseInterceptor(request, response) {
 		var endpoints = self.getConfig().endpoints;
 		// If there is an unauthorized error from one of our endpoints and we are logged in...
-		if (checkEndpoint(response.url, endpoints) && status === 401 && self.authenticated()) {
+		if (checkEndpoint(request.url, endpoints) && response.status === 401 && self.authenticated()) {
 			self.deleteSession();
-			//$rootScope.$broadcast('sl:logout', 'Session expired');
 		}
-		return Q.reject(response);
 	}
 
 	function checkEndpoint(url, endpoints) {
@@ -74,15 +72,8 @@ function Superlogin(config) {
 		return false;
 	}
 
-	// intercept ajax calls and bearer header
-	$(document).ajaxSend(function (event, jqxhr, settings) {
-		return request(jqxhr);
-	});
-
-	// intercept ajax errors and invalidate session
-	$(document).ajaxError(function (event, jqxhr, settings, thrownError) {
-		return responseError(settings, jqxhr.status);
-	});
+	xhook.before(requestInterceptor);
+	xhook.after(responseInterceptor);
 }
 
 Superlogin.prototype = Object.create(Session.prototype);
@@ -123,7 +114,6 @@ Superlogin.prototype.login = function (credentials) {
 		.then(function (res) {
 			res.data.serverTimeDiff = res.data.issued - Date.now();
 			self.setSession(res.data);
-			// $rootScope.$broadcast('sl:login', res.data);
 			return Q.when(res.data);
 		}, function (err) {
 			self.deleteSession();
