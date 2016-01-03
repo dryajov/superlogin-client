@@ -267,7 +267,7 @@ Superlogin.prototype.link = function (provider) {
 	if (this.authenticated()) {
 		var session = this.getSession();
 		var linkURL = this.getConfig().baseUrl + 'link/' + provider + '?bearer_token=' + session.token + ':' + session.password;
-		return oAuthPopup(linkURL, {windowTitle: 'Link your account to ' + capitalizeFirstLetter(provider)});
+		return this.oAuthPopup(linkURL, {windowTitle: 'Link your account to ' + capitalizeFirstLetter(provider)});
 	}
 	return Q.reject({error: 'Authentication required'});
 };
